@@ -61,9 +61,9 @@ Pack.prototype.entry = function (header, buffer, callback) {
 
   if(!callback) callback = noop
 
-  if(!header.dev) header.dev = 0777777
+  if(!header.dev) header.dev = 0x3FFFF
   if(!header.ino) header.ino = this._ino++
-  if(!header.mode) header.mode = 0100644 // make this compatible with tar-stream?
+  if(!header.mode) header.mode = 0x81A4 // make this compatible with tar-stream?
   if(!header.uid) header.uid = 0
   if(!header.gid) header.gid = 0
   if(!header.nlink) header.nlink = 1
@@ -85,7 +85,7 @@ Pack.prototype.entry = function (header, buffer, callback) {
 
   this._push(headers.encode(header))
 
-  if(header.mode & 0170000 !== 0100000) {
+  if((header.mode & 0xF000) !== 0x8000) {
     process.nextTick(callback)
     return new Void()
   }
