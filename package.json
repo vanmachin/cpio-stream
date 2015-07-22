@@ -11,6 +11,10 @@
     "url": "https://github.com/finnp/cpio-stream.git"
   },
   "author": "Finn Pauls",
+  "contributors": [{
+    "name": "vanmachin",
+    "email": "vanmachin@gmail.com"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/finnp/cpio-stream/issues"
